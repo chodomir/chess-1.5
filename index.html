@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chessboard</title>
+
+    <style>
+        html {
+            background-color: rgb(238, 238, 238)
+        }
+
+        #container {
+            max-width: 500px;
+            margin: auto;
+        }
+
+        #chessboard {
+            border-collapse: collapse;
+            -webkit-transition: ease-in 2s;
+            -moz-transition: ease-in 2s;
+            -o-transition: ease-in 2s;
+            -ms-transition: ease-in 2s;
+            transition: ease-in 2s;
+            border: 5px solid black;
+            cursor: pointer;
+            float: left;
+        }
+
+        #status {
+            float:right;
+        }
+
+        #status td {
+            padding: 5px;
+        }
+
+        .black {
+            background-color: rgb(100, 96, 86)
+        }
+
+        .white {
+            background-color: white;
+        }
+
+        #chessboard tr td {
+            width: 40px;
+            height: 40px;
+            font-size: 33px;
+            text-align: center;
+        }
+
+        #chessboard tr td:active {
+            background-color: red;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="container">
+        <table style="width: 100%; height: 100%;">
+            <table id="chessboard"></table>
+        
+            <table id="status">
+                <tr>
+                    <td>Player:</td>
+                    <td id="turn"></td>
+                </tr>
+                <tr>
+                    <td>Time left:</td>
+                    <td id="time">5:00</td>
+                </tr>
+            </table>
+        </table>
+    </div>
+
+    <script src="scripts/Timer.js"></script>
+    <script src="scripts/globals.js"></script>
+    <script src="scripts/Piece.js"></script>
+    <script src="scripts/Square.js"></script>
+    <script src="scripts/Chessboard.js"></script>
+    <script src="scripts/Game.js"></script>
+    <script src="scripts/GameInterface.js"></script>
+    <script src="scripts/Move.js"></script>
+    <script src="scripts/Rules.js"></script>
+
+    <script>
+        let board = new Chessboard();
+        let game = new Game(board);
+        let gui = new GameInterface(game);
+
+        gui.constructChessboard(board);
+        gui.drawTurn();
+    </script>
+
+</body>
+</html>
